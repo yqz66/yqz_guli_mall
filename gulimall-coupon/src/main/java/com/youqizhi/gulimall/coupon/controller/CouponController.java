@@ -5,6 +5,8 @@ import com.youqizhi.common.utils.R;
 import com.youqizhi.gulimall.coupon.entity.CouponEntity;
 import com.youqizhi.gulimall.coupon.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -22,9 +24,28 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("coupon/coupon")
+@RefreshScope
 public class CouponController {
     @Autowired
     private CouponService couponService;
+
+
+    @Value("${youqizhi.name}")
+    private String name;
+    @Value("${youqizhi.age}")
+    private String age;
+
+    /**
+     * 测试配置中心
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping("config/test")
+    public R configTest() {
+        return R.ok().put("name", name).put("age", age);
+    }
+
 
     /**
      * 测试 feign 远程调用

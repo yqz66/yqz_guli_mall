@@ -1,8 +1,11 @@
 spring:
   application:
     name: gulimall-coupon
-  # 配置中心地址
   cloud:
     nacos:
+  # 指定注册中心地址
       discovery:
         server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+

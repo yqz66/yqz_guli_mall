@@ -11,3 +11,6 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+youqizhi:
+  name: youqizhi01
+  age: 20
