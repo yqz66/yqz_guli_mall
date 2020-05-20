@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: test_baidu
+        uri: https://www.baidu.com
+        predicates:
+        #使用参数匹配规则，当存在uri参数 ，并且参数值等于baidu时，跳转 https://www.baidu.com
+        - Query=uri,baidu

@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+  # 指定注册中心地址
+      discovery:
+        server-addr: 127.0.0.1:8848
+#   指定配置中心地址
+      config:
+        server-addr: 127.0.0.1:8848
+#        指定命名空间
+        namespace: 017ff2ae-f326-4faf-9e77-c4a4466d1c6b
+#   指定多配置集
+        ext-config:
+#        指定配置文件名称
+          - data-id: gulimall-gateway.yml
+#        指定配置分组
+            group: dev
+#        是否动态刷新
+            refresh: true
+#          - data-id: mybatis.yml
+#            group: dev
+#            refresh: true
+#          - data-id: gulimall-coupon.yml
+#            group: dev
+#            refresh: true
+
+
+
+
