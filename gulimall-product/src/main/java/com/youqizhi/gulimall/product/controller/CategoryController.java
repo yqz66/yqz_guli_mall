@@ -1,6 +1,5 @@
 package com.youqizhi.gulimall.product.controller;
 
-import com.youqizhi.common.utils.PageUtils;
 import com.youqizhi.common.utils.R;
 import com.youqizhi.gulimall.product.entity.CategoryEntity;
 import com.youqizhi.gulimall.product.service.CategoryService;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -28,14 +28,13 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * 列表
+     * 查出所有分类及子分类，以树形结构组装起来
      */
-    @RequestMapping("/list")
+    @RequestMapping("/list/tree")
    // @RequiresPermissions("product:category:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
-
-        return R.ok().put("page", page);
+        List<CategoryEntity> list = categoryService.listWithTree();
+        return R.ok().put("data", list);
     }
 
 
